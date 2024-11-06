@@ -1,4 +1,4 @@
-import config from 'dotenv'; // Cargar variables de entorno desde .env
+import { config } from 'dotenv'; // Cargar variables de entorno desde .env
 
 import serverless from 'serverless-http';
 import express from 'express';
@@ -52,6 +52,13 @@ db.connect((err) => {
 });
 
 // Middleware
+// enable CORS
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,PATCH,POST,DELETE");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.use(cors());
 app.use(bodyParser.json());
 
