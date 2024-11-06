@@ -1,3 +1,6 @@
 /node_modules
 .env
 ca.pem
+
+# Local Netlify folder
+.netlify

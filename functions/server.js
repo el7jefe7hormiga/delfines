@@ -1,11 +1,13 @@
-require('dotenv').config(); // Cargar variables de entorno desde .env
+import config from 'dotenv'; // Cargar variables de entorno desde .env
 
+import serverless from 'serverless-http';
+import express from 'express';
+import mysql from 'mysql2';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import fs from 'fs';
 
-const express = require('express');
-const mysql = require('mysql2');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const fs = require('fs');
+config();
 
 const app = express();
 const PORT = process.env.PORT || 3000; // Usar el puerto desde la variable de entorno
@@ -123,6 +125,8 @@ app.delete('/api/jugadores/:id', (req, res) => {
 });
 
 // Iniciar el servidor
-app.listen(PORT, () => {
+app.use('/.netlify/functions/server');
+export const handler = serverless(app);
+/* app.listen(PORT, () => {
   console.log(`Servidor API corriendo en el puerto ${PORT}`);
-});
+}); */
