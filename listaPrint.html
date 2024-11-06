@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🏈 Lista Delfines - Imprimir</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet">
+  <script src="moment.min.js"></script>
+
+  <!-- Estilos de impresión -->
+  <style>
+    @media print {
+
+      /* Ocultar el botón de impresión en la versión impresa */
+      #printButton {
+        display: none;
+      }
+
+      /* Ajusta la tabla para ocupar el ancho completo en la impresión */
+      table {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+
+<div class="bg-gray-100 p-6">
+
+  <!-- Botón para imprimir la tabla -->
+  <button id="printButton" onclick="window.print()"
+    class="mb-4 px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600">
+    🖨️ Imprimir
+  </button>
+  <!-- Botón para cerrar la ventana -->
+  <button onclick="window.close()"
+    class="mb-4 px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600">
+    ❌ Cerrar impresión
+  </button>
+
+  <!-- Tabla de datos -->
+  <div class="overflow-x-auto">
+
+    <!-- Lista de los jugadores -->
+    <table class="min-w-full bg-white border border-gray-300">
+      <thead class="bg-gray-200">
+        <tr class="uppercase">
+          <th class="w-fit px-2 py-1 border border-gray-300 text-left">Nombre</th>
+          <th class="w-fit px-2 py-1 border border-gray-300 text-left">Fecha de Nac.</th>
+          <th class="w-fit px-2 py-1 border border-gray-300 text-left">Dirección</th>
+          <th class="w-fit px-2 py-1 border border-gray-300 text-left">Escuela</th>
+          <th class="w-fit px-2 py-1 border border-gray-300 text-left">Padres</th>
+          <th class="w-fit px-2 py-1 border border-gray-300 text-left">Telefono(s)</th>
+          <th class="w-fit px-2 py-1 border border-gray-300 text-left">Talla</th>
+        </tr>
+      </thead>
+      <tbody id="jugadores_Print">
+        <!-- Los jugadores se mostrarán aquí -->
+      </tbody>
+    </table>
+  </div>
+
+  <script src="api.js"></script>
+  <script>
+    obtenerJugadores('jugadores_Print');
+  </script>
+
+  </body>
+
+</html>
