@@ -8,7 +8,7 @@ const fdn_edad = (fdn) => {
 };
 
 
-const url_API = "https://delfines.netlify.app/.netlify/functions/server/api"  //"http://192.168.1.123:3000/api";
+const url_API = "https://delfines-api.vercel.app/api/"  //"http://192.168.1.123:3000/api";
 
 
 async function obtenerJugadores(donde = 'jugadoresTable') {
